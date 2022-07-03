@@ -12,7 +12,7 @@ while True: #ask user to enter the value
 	from tkinter import *
 	# 2-create a GUI user interface
 	if __name__ == "__main__":
-		giu_face = Tk() 
+		giu_face = Tk()
 		# 3-set the background color for the GUI interface.
 		giu_face.configure(background="red")
 		# 4-set the title for GUI interface
@@ -30,8 +30,8 @@ while True: #ask user to enter the value
 		equation.set(exp)
 	# 7-Code for Calculating Ultimate Expression
 	def pres():
-		try:
-			global exp
+	try:
+		global exp
 	# 8-using eval function to calculate expression
 	total_value = str(eval(exp))
 		equation.set(total_value)
@@ -73,7 +73,7 @@ while True: #ask user to enter the value
 	bton6.grid(row = 3, column = 2, ipady = 4 , ipadx = 2)
 	bton7 = Button(giu_face, text = ' 7 ', font="lucida 20 bold",,
 	command = lambda: input_val(7), height = 1, width = 7)
-	bton7.grid(row = 4, column = 0, ipady = 4 , ipadx = 2)	
+	bton7.grid(row = 4, column = 0, ipady = 4 , ipadx = 2)
 	bton8 = Button(giu_face, text = ' 8 ', font="lucida 20 bold",
 	command = lambda: input_val(8), height = 1, width = 7)
 	bton8.grid(row = 4, column = 1, ipady = 4 , ipadx = 2)
@@ -104,6 +104,6 @@ while True: #ask user to enter the value
 	command = lambda: input_val('.'), height = 1, width = 7)
 	Decimal.grid(row = 6, column = 0, ipady = 4 , ipadx = 2)
 	giu_face.mainloop()
- 
+
 print('Connection Closed')
 socket.close() #close all the socket
