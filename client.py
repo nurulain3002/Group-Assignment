@@ -26,20 +26,20 @@ while True: #ask user to enter the value
 		global exp
 		# string concatenation
 		exp = exp + str(number)
-	# using set method to update the expression
-	equation.set(exp)
+		# using set method to update the expression
+		equation.set(exp)
 	# 7-Code for Calculating Ultimate Expression
 	def pres():
-	try:
-	global exp
+		try:
+			global exp
 	# 8-using eval function to calculate expression
 	total_value = str(eval(exp))
 		equation.set(total_value)
 		exp = ""
-	# using except block to handle generated errors
-	except:
-	equation.set(" error ")
-	exp = ""
+		# using except block to handle generated errors
+		except:
+		equation.set(" error ")
+		exp = ""
 	# 9-Function for Clearing the Contents of the Calculator
 	def clearng():
 		global exp
@@ -48,8 +48,8 @@ while True: #ask user to enter the value
 		equation = StrVar()
 	# 10-Function for Creating the EntryBox for Typing the Text for Operation
 	exp_field = Ent(gui, text_variable=equation)
-		# 11-Using the Grid Method for Assigning the Widgets at their respective positions.
-		exp_field.grid(columnspan = 5)
+	# 11-Using the Grid Method for Assigning the Widgets at their respective positions.
+	exp_field.grid(columnspan = 5)
 		equation.set("enter your value")
 	# 12-create the Buttons and position them inside the window.
 
