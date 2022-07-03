@@ -1,6 +1,6 @@
 import socket
 
-IP = "192.168.56.105" #ip address of the server
+IP = "192.168.56.107" #ip address of the server
 PORT = 8888 #port number that used
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -23,9 +23,9 @@ while True: #ask user to enter the value
 		exp = ""
 	# 6-Function to Update the exp in the Text Entry Box
 	def pres(number):
-	global exp
-	# string concatenation
-	exp = exp + str(number)
+		global exp
+		# string concatenation
+		exp = exp + str(number)
 	# using set method to update the expression
 	equation.set(exp)
 	# 7-Code for Calculating Ultimate Expression
@@ -34,24 +34,23 @@ while True: #ask user to enter the value
 	global exp
 	# 8-using eval function to calculate expression
 	total_value = str(eval(exp))
-	equation.set(total_value)
-	exp = ""
-	using except block to handle errors if generated
+		equation.set(total_value)
+		exp = ""
 	# using except block to handle generated errors
 	except:
 	equation.set(" error ")
 	exp = ""
 	# 9-Function for Clearing the Contents of the Calculator
 	def clearng():
-	global exp
-	exp = ""
-	equation.set("")
-	equation = StrVar()
+		global exp
+		exp = ""
+		equation.set("")
+		equation = StrVar()
 	# 10-Function for Creating the EntryBox for Typing the Text for Operation
 	exp_field = Ent(gui, text_variable=equation)
-	# 11-Using the Grid Method for Assigning the Widgets at their respective positions.
-	exp_field.grid(columnspan = 5)
-	equation.set("enter your value")
+		# 11-Using the Grid Method for Assigning the Widgets at their respective positions.
+		exp_field.grid(columnspan = 5)
+		equation.set("enter your value")
 	# 12-create the Buttons and position them inside the window.
 
 	bton1 = Button(giu_face, text =' 1 ', font="lucida 20 bold",
