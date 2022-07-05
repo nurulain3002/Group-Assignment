@@ -1,12 +1,94 @@
 import socket
+import operator
+
+operators = {
+            "+" : operator.add,
+            "-" : operator.sub,
+            '*' : operator.mul,
+            '/' : operator.truediv,
+            '%' : operator.mod,
+            '^' : operator.xor,
+            }
+
 def main_menu():
-    print('Welcome to the calculator!')
+    print('\nWelcome to the calculator!')
     print('A: Arithmetic calculation')
     print('B: Unit Conversion')
     print('\nPress A if you want to do arithmetic calculation')
     print('Press B if you want to do unit conversion')
     print('Press E if you want to exit')
+
+def add():
+    print('\nThis is addition operation')
+    print('\nEnter the values of A and B')
+    a = str(input('A: '))
+    b = str(input('B: '))
+    add = a+b
+    print('Answer: {0}'.format(add))
+    message = a + '+' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
     
+def minus():
+    print('This is subtraction operation')
+    print('\nEnter the values of A and B')
+    print('Enter value of A')
+    a = input()
+    print('Enter value of B')
+    b = input()
+    message = a + '-' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+    
+def multiply():
+    print('This is multiplication operation')
+    print('\nEnter the values of A and B')
+    print('Enter value of A')
+    a = input()
+    print('Enter value of B')
+    b = input()
+    message = a + '*' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+    
+def divide():
+    print('This is division operation')
+    print('\nEnter the values of A and B')
+    print('Enter value of A')
+    a = input()
+    print('Enter value of B')
+    b = input()
+    message = a + '/' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+    
+def modulus():
+    print('This is modulus operation')
+    print('\nEnter the values of A and B')
+    print('Enter value of A')
+    a = input()
+    print('Enter value of B')
+    b = input()
+    message = a + '%' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+    
+def power():    
+    print('This is power operation')
+    print('\nEnter the values of A and B')
+    print('Enter value of A')
+    a = input()
+    print('Enter value of B')
+    b = input()
+    message = a + 'power of' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
                                        
 def cm_m():
     cm=float(input('Enter a length in centimeter (cm): '))
@@ -88,86 +170,35 @@ while True: #ask user to enter the value
                                         print('4. Division') 
                                         print('5. Modulus')
                                         print('6. Power')
-                                        print('Enter X if you want to exit the calculator')
+                                        print('Enter E if you want to exit the calculator')
                                         print('Enter M to return to the main calculator')
                                         insert = input()
                                         
                                         if insert == '1':
-                                            print('This is addition operation')
-                                            print('\nEnter the values of A and B')
-                                            print('Enter value of A')
-                                            a = input()
-                                            print('Enter value of B')
-                                            b = input()
-                                            message = a + '+' + b
-                                            print('Message being send to server: ' + message + "\n")
-                                            socket.sendto(message.encode('utf-8'), (IP, PORT))
-                                            print('Returning to main calculator.........')
-                                            main_menu()
+                                            add()
                                             
                                         if insert == '2':
-                                            print('This is subtraction operation')
-                                            print('\nEnter the values of A and B')
-                                            print('Enter value of A')
-                                            a = input()
-                                            print('Enter value of B')
-                                            b = input()
-                                            message = a + '-' + b
-                                            print('Message being send to server: ' + message + "\n")
-                                            socket.sendto(message.encode('utf-8'), (IP, PORT))
+                                            minus()
                                             
                                         if insert == '3':
-                                            print('This is multiplication operation')
-                                            print('\nEnter the values of A and B')
-                                            print('Enter value of A')
-                                            a = input()
-                                            print('Enter value of B')
-                                            b = input()
-                                            message = a + '*' + b
-                                            print('Message being send to server: ' + message + "\n")
-                                            socket.sendto(message.encode('utf-8'), (IP, PORT))
+                                            multiply()
                                             
                                         if insert == '4':
-                                            print('This is division operation')
-                                            print('\nEnter the values of A and B')
-                                            print('Enter value of A')
-                                            a = input()
-                                            print('Enter value of B')
-                                            b = input()
-                                            message = a + '/' + b
-                                            print('Message being send to server: ' + message + "\n")
-                                            socket.sendto(message.encode('utf-8'), (IP, PORT))
+                                            divide()
                                             
                                         if insert == '5':
-                                            print('This is modulus operation')
-                                            print('\nEnter the values of A and B')
-                                            print('Enter value of A')
-                                            a = input()
-                                            print('Enter value of B')
-                                            b = input()
-                                            message = a + '%' + b
-                                            print('Message being send to server: ' + message + "\n")
-                                            socket.sendto(message.encode('utf-8'), (IP, PORT))
+                                            modulus()
                                             
                                         if insert == '6':
-                                            print('This is power operation')
-                                            print('\nEnter the values of A and B')
-                                            print('Enter value of A')
-                                            a = input()
-                                            print('Enter value of B')
-                                            b = input()
-                                            message = a + 'power of' + b
-                                            print('Message being send to server: ' + message + "\n")
-                                            socket.sendto(message.encode('utf-8'), (IP, PORT))
+                                            power()
                                         
-                                        
-                                        if a == 'M' or a =='m' or b == 'M' or b == 'm':
+                                        if insert == 'M' or insert =='m':
                                             main_menu()
                                         
-                                        if a == 'E' or a =='e' or b == 'E' or b == 'e':
+                                        if insert == 'E' or insert =='e':
                                             print('Exiting the calculator')
                                             break
-
+                                        
                                         data, address = socket.recvfrom(2048)
                                         text = data.decode('utf-8')
                                         print('Result received from server %s : %s ' % (address, text) + "\n")
@@ -180,7 +211,7 @@ while True: #ask user to enter the value
                                         print('3. Height') #cm to feet , feet to cm 
                                         print('4. Distance') #km to m , m to km
                                         print('5. Temperature') #celcius to fahrenhait, fahrenhait to celcius
-                                        print('Enter X if you want to exit the calculator')
+                                        print('Enter E if you want to exit the calculator')
                                         print('Enter M to return to the main calculator')
                                         choice = input ()
                                     
