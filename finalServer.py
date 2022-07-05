@@ -11,8 +11,7 @@ print('Server Listening At {}'.format(socket.getsockname())) #get client ip and 
 while True: #while loop
     messageBytes, address = socket.recvfrom(2048) #receive from client
     messageString = messageBytes.decode('utf-8') #decode bytes to string
-    print('Received from client {} : {}'.format(address, messageString)) #print message in string from client
-    print('\n')
+    print('\nReceived from client {} : {}'.format(address, messageString)) #print message in string from client
     print(messageString)
 
     if messageString == 'E' or messageString == 'e': #when client choose to exit
