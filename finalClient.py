@@ -1,16 +1,22 @@
 import socket
 
-IP = "192.168.56.105" #ip address of the server
+IP = "192.168.56.109" #ip address of the server
 PORT = 8888 #port number that used
 
 def main_menu():
     print('\nWelcome to the conversion calculator!')
-    print('Which conversion would you like to do?')
-    print('1. Length') #cm to m , m to cm
-    print('2. Weight') #kg to pounds , pounds to kg
-    print('3. Height') #cm to feet , feet to cm 
-    print('4. Distance') #km to m , m to km
-    print('5. Temperature') #celcius to fahrenhait, fahrenhait to celcius
+    print('Which function would you like to do?')
+    print('1. Length Conversion') #cm to m , m to cm
+    print('2. Weight Conversion') #kg to pounds , pounds to kg
+    print('3. Height Conversion') #cm to feet , feet to cm 
+    print('4. Distance Conversion') #km to m , m to km
+    print('5. Temperature Conversion') #celcius to fahrenhait, fahrenhait to celcius
+    print('6. Addition Operation') #addition
+    print('7. Subtraction Operation') #substraction
+    print('8. Multiplication Operation') #multiplication
+    print('9. Division Operation') #division
+    print('10. Modulus Operation') #modulus
+    print('11. Power Operation') #power
     print('Enter E if you want to exit the calculator')
     print('Enter M if you want to return to the main menu')
         
@@ -19,7 +25,7 @@ def cm_m():
     m= cm/100
     print('Length in centimeter (cm): {0}'.format(m))
     message = 'Conversion for length from cm to m for ' + str(cm) + ' is ' + str(m)
-    print('\nMessage being send to server: ' + '\n' + message + "\n")
+    print(\n'Message being send to server: ' + '\n' + message + "\n")
     socket.sendto(message.encode('utf-8'), (IP, PORT))
     main_menu()
 
@@ -103,6 +109,62 @@ def F_celcius():
     print('\nMessage being send to server: ' + '\n' + message + "\n")
     socket.sendto(message.encode('utf-8'), (IP, PORT))
     main_menu()
+
+def add():
+    num1 = float(input('\nEnter the first number: '))
+    num2 = float(input('\nEnter the second number: '))
+    ans = num1 + num2
+    message = 'The addition for ' + str(num1) + ' and ' + str(num2) + ' is ' + str(ans)
+    print('\nMessage being send to server: ' + '\n' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+
+def sub():
+    num1 = float(input('\nEnter the first number: '))
+    num2 = float(input('\nEnter the second number: '))
+    ans = num1 - num2
+    message = 'The subtraction  for ' + str(num1) + ' and ' + str(num2) + ' is ' + str(ans)
+    print('\nMessage being send to server: ' + '\n' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+
+def mul():
+    num1 = float(input('\nEnter the first number: '))
+    num2 = float(input('\nEnter the second number: '))
+    ans = num1 * num2
+    message = 'The multiplication  for ' + str(num1) + ' and ' + str(num2) + ' is ' + str(ans)
+    print('\nMessage being send to server: ' + '\n' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+
+def div():
+    num1 = float(input('\nEnter the first number: '))
+    num2 = float(input('\nEnter the second number: '))
+    ans = num1 / num2
+    message = 'The division  for ' + str(num1) + ' and ' + str(num2) + ' is ' + str(ans)
+    print('\nMessage being send to server: ' + '\n' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+
+def mod():
+    num1 = float(input('\nEnter the first number: '))
+    num2 = float(input('\nEnter the second number: '))
+    ans = num1 % num2
+    message = 'The modulus  for ' + str(num1) + ' and ' + str(num2) + ' is ' + str(ans)
+    print('\nMessage being send to server: ' + '\n' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+
+def pow():
+    num1 = float(input('\nEnter the first number: '))
+    num2 = float(input('\nEnter the second number: '))
+    ans = num1 ** num2
+    message = 'The power of num  ' + str(num1) + ' and ' + str(num2) + ' is ' + str(ans)
+    print('\nMessage being send to server: ' + '\n' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+
+
     
 main_menu()
 
@@ -166,7 +228,32 @@ while True: #ask user to enter the value
             celcius_F()
         if choice_temp == '2':
             F_celcius()
+
+    elif choice == '6':
+        print('\nThis is addition operation')
+        add()
     
+    elif choice == '7':
+        print('\nThis is subtraction operation')
+        sub()
+   
+    elif choice == '8':
+        print('\nThis is multiplication operation')
+        mul()
+
+    elif choice == '9':
+        print('\nThis is division operation')
+        div()
+
+    elif choice == '10':
+        print('\nThis is modulus operation')
+        mod()
+
+    elif choice == '11':
+        print('\nThis is power operation')
+        pow()
+
+
     elif choice == 'M' or choice =='m':
         main_menu()
         
