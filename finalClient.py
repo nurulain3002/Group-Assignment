@@ -3,17 +3,17 @@ import socket
 IP = "192.168.56.105" #ip address of the server
 PORT = 8888 #port number that used
 
-def main_menu():
+def main_menu(): #menu to display 
     print('\nWelcome to the conversion calculator!')
     print('Which conversion would you like to do?')
     print('1. Length') #cm to m , m to cm
     print('2. Weight') #kg to pounds , pounds to kg
-    print('3. Height') #cm to feet , feet to cm 
+    print('3. Height') #cm to feet , feet to cm
     print('4. Distance') #km to m , m to km
     print('5. Temperature') #celcius to fahrenhait, fahrenhait to celcius
     print('Enter E if you want to exit the calculator')
     print('Enter M if you want to return to the main menu')
-        
+
 def cm_m():
     cm=float(input('\nEnter a length in centimeter (cm): '))
     m= cm/100
@@ -31,7 +31,7 @@ def m_cm():
     print('\nMessage being send to server: ' + '\n' + message + "\n")
     socket.sendto(message.encode('utf-8'), (IP, PORT))
     main_menu()
-    
+
 def kg_pounds():
     kg=float(input('\nEnter a weight in kilogram (kg): '))
     pounds= kg*2.205
