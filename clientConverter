@@ -1,0 +1,284 @@
+import socket
+import operator
+
+operators = {
+            "+" : operator.add,
+            "-" : operator.sub,
+            '*' : operator.mul,
+            '/' : operator.truediv,
+            '%' : operator.mod,
+            '^' : operator.xor,
+            }
+
+def main_menu():
+    print('\nWelcome to the calculator!')
+    print('A: Arithmetic calculation')
+    print('B: Unit Conversion')
+    print('\nPress A if you want to do arithmetic calculation')
+    print('Press B if you want to do unit conversion')
+    print('Press E if you want to exit')
+
+def add():
+    print('\nThis is addition operation')
+    print('\nEnter the values of A and B')
+    a = str(input('A: '))
+    b = str(input('B: '))
+    add = a+b
+    print('Answer: {0}'.format(add))
+    message = a + '+' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+    
+def minus():
+    print('This is subtraction operation')
+    print('\nEnter the values of A and B')
+    print('Enter value of A')
+    a = input()
+    print('Enter value of B')
+    b = input()
+    message = a + '-' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+    
+def multiply():
+    print('This is multiplication operation')
+    print('\nEnter the values of A and B')
+    print('Enter value of A')
+    a = input()
+    print('Enter value of B')
+    b = input()
+    message = a + '*' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+    
+def divide():
+    print('This is division operation')
+    print('\nEnter the values of A and B')
+    print('Enter value of A')
+    a = input()
+    print('Enter value of B')
+    b = input()
+    message = a + '/' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+    
+def modulus():
+    print('This is modulus operation')
+    print('\nEnter the values of A and B')
+    print('Enter value of A')
+    a = input()
+    print('Enter value of B')
+    b = input()
+    message = a + '%' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+    
+def power():    
+    print('This is power operation')
+    print('\nEnter the values of A and B')
+    print('Enter value of A')
+    a = input()
+    print('Enter value of B')
+    b = input()
+    message = a + 'power of' + b
+    print('Message being send to server: ' + message + "\n")
+    socket.sendto(message.encode('utf-8'), (IP, PORT))
+    main_menu()
+                                       
+def cm_m():
+    cm=float(input('Enter a length in centimeter (cm): '))
+    m= cm/100
+    print('Length in centimeter (cm): {0}'.format(m))
+    main_menu()
+
+def m_cm():
+    m=float(input('Enter a length in meter (m): '))
+    cm= m*100
+    print('Length in meter (m): {0}'.format(cm))
+    main_menu()
+    
+def kg_pounds():
+    kg=float(input('Enter a weight in kilogram (kg): '))
+    pounds= kg*2.205
+    print('Weight in pounds (lb): {0}'.format(pounds))
+    main_menu()
+
+def pounds_kg():
+    pounds=float(input('Enter a weight in pounds (lb): '))
+    kg= pounds/2.205
+    print('Weight in kilogram (kg): {0}'.format(kg))
+    main_menu()
+    
+def cm_feet():
+    cm=float(input('Enter a height in centimeter (cm): '))
+    feet= cm/30.48
+    print('Height in feet (ft): {0}'.format(feet))
+    main_menu()
+
+def feet_cm():
+    feet=float(input('Enter a height in centimeter (cm): '))
+    cm= feet*30.48
+    print('Height in centimeter (cm): {0}'.format(cm))
+    main_menu()
+    
+def km_m():
+    km=float(input('Enter a distance in kilometer (km): '))
+    m= km*1000
+    print('Distance in meter (m): {0}'.format(m))
+    main_menu()
+
+def m_km():
+    m=float(input('Enter a distance in meter: '))
+    km=m/1000
+    print('Distance in kilometer (km): {0}'.format(km))
+    main_menu()
+    
+def celcius_F():
+    celcius=float(input('Enter a temperature in celcius (°C): '))
+    F= (celcius * 9/5) + 32
+    print('Temperature in Fahrenheit (F): {0}'.format(F))
+    main_menu()
+
+def F_celcius():
+    F=float(input('Enter a temperature in Fahrenheit (F): '))
+    celcius= (F -32) * 5/9
+    print('Temperature in celcius (°C): {0}'.format(celcius))
+    main_menu()
+    
+
+IP = "192.168.56.105" #ip address of the server
+PORT = 8888 #port number that used
+
+main_menu()
+
+socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+while True: #ask user to enter the value
+    option = input()
+    
+    if option == 'A' or option == 'a':
+                                        print('This is Arithmetic calculation')
+                                        print('Which operation would you like to do?')
+                                        print('1. Addition') 
+                                        print('2. Subtraction') 
+                                        print('3. Multiplication') 
+                                        print('4. Division') 
+                                        print('5. Modulus')
+                                        print('6. Power')
+                                        print('Enter E if you want to exit the calculator')
+                                        print('Enter M to return to the main calculator')
+                                        insert = input()
+                                        
+                                        if insert == '1':
+                                            add()
+                                            
+                                        if insert == '2':
+                                            minus()
+                                            
+                                        if insert == '3':
+                                            multiply()
+                                            
+                                        if insert == '4':
+                                            divide()
+                                            
+                                        if insert == '5':
+                                            modulus()
+                                            
+                                        if insert == '6':
+                                            power()
+                                        
+                                        if insert == 'M' or insert =='m':
+                                            main_menu()
+                                        
+                                        if insert == 'E' or insert =='e':
+                                            print('Exiting the calculator')
+                                            break
+                                        
+                                        data, address = socket.recvfrom(2048)
+                                        text = data.decode('utf-8')
+                                        print('Result received from server %s : %s ' % (address, text) + "\n")
+                                        
+    elif option == 'B' or option == 'b':
+                                        print('This is Unit Conversion')
+                                        print('Which conversion would you like to do?')
+                                        print('1. Length') #cm to m , m to cm
+                                        print('2. Weight') #kg to pounds , pounds to kg
+                                        print('3. Height') #cm to feet , feet to cm 
+                                        print('4. Distance') #km to m , m to km
+                                        print('5. Temperature') #celcius to fahrenhait, fahrenhait to celcius
+                                        print('Enter E if you want to exit the calculator')
+                                        print('Enter M to return to the main calculator')
+                                        choice = input ()
+                                    
+                                        if choice == '1':
+                                            print('This is length unit conversion')
+                                            print('1. cm to m')
+                                            print('2. m to cm')
+                                            choice_length = input()
+                                            
+                                            if choice_length == '1':
+                                                cm_m()
+                                            if choice_length == '2':
+                                                m_cm()
+                                           
+                                        if choice == '2':
+                                            print('This is weight unit conversion')
+                                            print('1. kg to pounds')
+                                            print('2. pounds to kg')
+                                            choice_weight = input()
+                                            
+                                            if choice_weight == '1':
+                                                kg_pounds()
+                                            if choice_weight == '2':
+                                                pounds_kg()
+                                                
+                                        if choice == '3':
+                                            print('This is height unit conversion')
+                                            print('1. cm to feet')
+                                            print('2. feet to cm')
+                                            choice_height = input()
+                                            
+                                            if choice_height == '1':
+                                                cm_m()
+                                            if choice_height == '2':
+                                                m_cm()
+                                          
+                                        if choice == '4':
+                                            print('This is distance unit conversion')
+                                            print('1. km to m')
+                                            print('2. m to km')
+                                            choice_distance = input()
+                                            
+                                            if choice_distance == '1':
+                                                km_m()
+                                            if choice_distance == '2':
+                                                m_km()
+                                           
+                                        if choice == '5':
+                                            print('This is temperature unit conversion')
+                                            print('1. °C to F')
+                                            print('2. F to °C ')
+                                            choice_temp = input()
+                                            
+                                            if choice_temp == '1':
+                                                celcius_F()
+                                            if choice_temp == '2':
+                                                F_celcius()
+                                        
+                                        if choice == 'M' or choice =='m':
+                                            main_menu()
+    elif option == 'E' or option == 'e':
+        break;
+    
+    else:
+        print('Wrong input, please enter the right input')
+        main_menu()
+
+                                          
+print('Connection Closed')
+socket.close() #close all the socket
