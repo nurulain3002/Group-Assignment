@@ -10,7 +10,7 @@ operators = {
             '^' : operator.xor,
             }
 
-IP = "192.168.56.101"
+IP = "192.168.56.106"
 PORT = 8888
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
