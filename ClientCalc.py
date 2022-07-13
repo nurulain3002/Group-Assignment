@@ -2,7 +2,7 @@
 import socket
 import math
 ClientSocket = socket.socket()
-host = '192.168.56.105'
+host = '192.168.56.109'
 port = 8888
 
 print('Waiting for connection')
@@ -14,7 +14,7 @@ except socket.error as e:
 Response = ClientSocket.recv(2048)
 print(Response)
 while True:
-    print("Option:   1-cm to m Conversion      2-m to cm Conversion    3-kg to pounds Conversion    4-pounds to kg Conversion   5-cm to feet Conversion    6-feet to cm Conversion   7-km to m Conversion   8-m to km Conversion  9-celcius to f Conversion 10-f to celcius Conversion 11-Addition Operation 12-Subtraction Operation 13-Multiplication Operation 14-Division Operation  15-Modulus Operation  16-Power Operation  17-exit\n")
+    print("Option:   \n1-cm to m Conversion     \n2-m to cm Conversion   \n3-kg to pounds Conversion    \n4-pounds to kg Conversion   \n5-cm to feet Conversion    \n6-feet to cm Conversion   \n7-km to m Conversion   \n8-m to km Conversion  \n9-celcius to f Conversion \n10-f to celcius Conversion \n11-Addition Operation \n12-Subtraction Operation \n13-Multiplication Operation \n14-Division Operation  \n15-Modulus Operation  \n16-Power Operation  \n17-exit\n")
     option = input('Enter Your Option: ')
     ClientSocket.send(str.encode(option))
     number = input('Enter number: ')
