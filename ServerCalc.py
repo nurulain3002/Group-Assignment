@@ -9,108 +9,104 @@ from multiprocessing import Process
 def process_start(s_sock):
     s_sock.send(str.encode('Welcome to the Server'))
     while True:
-        option = s_sock.recv(2048)
-        dec = option.decode()
-        print("The option is", dec)
-        if not option:
-            break
-        number = s_sock.recv(2048)
-        inumber = int(number)
-        print("The number is" , inumber)
-        if (dec == '1'):
-          cm=float(input('Enter a length in centimeter (cm): '))
-          result = cm/100
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result for cm to m:", result)
-        elif (dec == '2'):
-          m=float(input('Enter a length in meter (m): '))
-          result = m*100
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result m to cm:", result)
-        elif (dec == '3'):
-          kg=float(input('Enter a weight in kilogram (kg): '))
-          result = kg*2.205
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result for kg to pounds:", result)
-        elif (dec == '4'):
-          pounds=float(input('Enter a weight in pounds (lb): '))
-          result = pounds/2.205
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result for pounds to kg:", result)
-        elif (dec == '5'):
-          cm=float(input('Enter a height in centimeter (cm): '))
-          result = cm/30.48
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result for cm to feet:", result)
-        elif (dec == '6'):
-          feet=float(input('Enter a height in feet: '))
-          result = feet*30.48
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result for feet to cm:", result)
-        elif (dec == '7'):
-          km=float(input('Enter a distance in kilometer (km): '))
-          result = km*1000
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result for km to m:", result)
-        elif (dec == '8'):
-          m=float(input('Enter a distance in meter: '))
-          result =m/1000
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result for m to km:", result)
-        elif (dec == '9'):
-          celcius=float(input('Enter a temperature in celcius (°C): '))
-          result = (celcius * 9/5) + 32
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result for celcius to f:", result)
-        elif (dec == '10'):
-          F=float(input('Enter a temperature in Fahrenheit (F): '))
-          result = (F -32) * 5/9
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result for f to celcius:", result)
-        elif (dec == '11'):
-          a = str(input('A: '))
-          b = str(input('B: '))
-          result = a + b
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result is:", result)
-        elif (dec == '12'):
-          a = str(input('A: '))
-          b = str(input('B: '))
-          result = a - b
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result is:", result)
-        elif (dec == '13'):
-          a = str(input('A: '))
-          b = str(input('B: '))
-          result = a * b
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result is:", result)
-        elif (dec == '14'):
-          a = str(input('A: '))
-          b = str(input('B: '))
-          result = a / b
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result is:", result)
-        elif (dec == '15'):
-          a = str(input('A: '))
-          b = str(input('B: '))
-          result = a % b
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result is:", result)
-        elif (dec == '16'):
-          a = str(input('A: '))
-          b = str(input('B: '))
-          result = a ^ b
-          s_sock.send(bytes(str(result), 'utf-8'))
-          print("The result is:", result)
-        elif (dec == '17'):
-          s_sock.close()
-          print("Client has been disconnected.")
-        else:
-          print("Invalid option. Try again!")
-          s_sock.close()
-    s_sock.close()
+        data = s_sock.recv(2048)
+        data = data.decode("utf-8")
 
+        #calculation
+        try:
+            opt, num1, num2 = data.split(":")
+            option = str(opt)
+            number1 = int(num1)
+            number2 =  int(num2)
+
+            if (option[0] == 'A'):
+              option = "cm to m Conversion"
+              number1 = float(input('Enter a length in centimeter (cm): '))
+              result = number1/100
+            elif (option[0] == 'B'):
+              option = "m to cm Conversion"
+              number1=float(input('Enter a length in meter (m): '))
+              result = number1*100
+            elif (option[0] == 'C'):
+              option = "kg to pounds Conversion"
+              number1=float(input('Enter a weight in kilogram (kg): '))
+              result = number1*2.205
+            elif (option[0] == 'D'):
+              option = "pounds to kg Conversion"
+              number1=float(input('Enter a weight in pounds (lb): '))
+              result = number1/2.205
+            elif (option[0] == 'E'):
+              option = "cm to feet Conversion"
+              number1=float(input('Enter a height in centimeter (cm): '))
+              result = number1/30.48
+            elif (option[0] == 'F'):
+              option = "feet to cm Conversion"
+              number1=float(input('Enter a height in feet: '))
+              result = number1*30.48
+            elif (option[0] == 'G'):
+              option = "km to m Conversion"
+              number1=float(input('Enter a distance in kilometer (km): '))
+              result = number1*1000
+            elif (option[0] == 'H'):
+              option = "m to km Conversion"
+              number1=float(input('Enter a distance in meter: '))
+              result =number1/1000
+            elif (option[0] == 'I'):
+              option = "celcius to f Conversion"
+              number1=float(input('Enter a temperature in celcius (°C): '))
+              result = (number1 * 9/5) + 32
+            elif (option[0] == 'J'):
+              option = "f to celcius Conversion"
+              number1=float(input('Enter a temperature in Fahrenheit (F): '))
+              result = (number1 -32) * 5/9
+            elif (option[0] == 'K'):
+              option = "Addition Operation"
+              number1 = str(input('A: '))
+              number2 = str(input('B: '))
+              result = number1 + number2
+            elif (option[0] == 'L'):
+              option = "Subtraction Operation"
+              number1 = str(input('A: '))
+              number2 = str(input('B: '))
+              result = number1 - number2
+            elif (option[0] == 'M'):
+              option = "Multiplication Operation"
+              number1 = str(input('A: '))
+              number2 = str(input('B: '))
+              result = number1 * number2
+            elif (option[0] == 'N'):
+              option = "Division Operation"
+              number1 = str(input('A: '))
+              number2 = str(input('B: '))
+              result = number1 / number2
+            elif (option[0] == 'O'):
+              option = "Modulus Operation"
+              number1 = str(input('A: '))
+              number2 = str(input('B: '))
+              result = number1 % number2
+            elif (option[0] == 'P'):
+              option = "Power Operation"
+              number1 = str(input('A: '))
+              number2 = str(input('B: '))
+              result = number1 ^ number2
+            else:
+              print("Invalid option. Try again!")
+
+            sendtoClient = (str(option) + int(number)+ "\nThe answer is:" + str(re>
+            print(sendtoClient)
+            print ('DATA RECEIVED :')
+            #break
+
+        except:
+            print ("Client Disconnected")
+            s_sock.send(str("Client Disconnected"))
+            break
+
+        if not data:
+            break
+
+        s_sock.send(str.encode(str(sendtoClient)))
+    s_sock.close()
 
 if __name__ == '__main__':
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
