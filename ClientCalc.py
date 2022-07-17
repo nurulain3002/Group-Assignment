@@ -43,9 +43,10 @@ while True:
     option = input('Enter Your Option or Type "EXIT" if you are done :\n ')
     
 
-    if option == "A" or option == "B" or option == "C" or option == "D" or option == "E" or option == "F" or option == "G" or option == "H" or option == "I" or option == "J" or option == "K" or option == "L" or option == "M" or option == "N" or option == "O" or option == "P" :
-        number = '0'
-        input = option + ":" + number
+    if option == "A" or option == "B" or option == "C" or option == "D" or option == "E" or option == "F" or option == "G" or option == "H" or option == "I" or option == "J" or option == "K" or option == "L" or option == "M" or option == "N" or option == "O" or option == "P":
+        number1 = '0'
+        number2 = '0'
+        input =  option + ":" + number1 + ":" + number2
         ClientSocket.send(str.encode(input))
         Response = ClientSocket.recv(2048)
         print(Response.decode("utf-8"))
