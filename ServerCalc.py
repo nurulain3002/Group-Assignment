@@ -92,7 +92,7 @@ def process_start(s_sock):
             else:
               print("Invalid option. Try again!")
 
-            sendtoClient = (str(option) + int(number)+ "\nThe answer is:" + str(re>
+            sendtoClient = (str(option) + int(number)+ "\nThe answer is:" + str(result))
             print(sendtoClient)
             print ('DATA RECEIVED :')
             #break
