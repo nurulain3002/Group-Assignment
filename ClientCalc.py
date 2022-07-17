@@ -4,7 +4,7 @@ import math
 import sys
 
 ClientSocket = socket.socket()
-host = '192.168.56.109'
+host = '192.168.56.106'
 port = 8888
 
 print('\nWaiting for connection')
@@ -46,8 +46,8 @@ while True:
     if option == "A" or option == "B" or option == "C" or option == "D" or option == "E" or option == "F" or option == "G" or option == "H" or option == "I" or option == "J" or option == "K" or option == "L" or option == "M" or option == "N" or option == "O" or option == "P":
         number1 = '0'
         number2 = '0'
-        input =  option + ":" + number1 + ":" + number2
-        ClientSocket.send(str.encode(input))
+        Input =  option + ":" + number1 + ":" + number2
+        ClientSocket.send(str.encode(Input))
         Response = ClientSocket.recv(2048)
         print(Response.decode("utf-8"))
 
