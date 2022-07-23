@@ -4,7 +4,7 @@ import math
 import sys
 
 ClientSocket = socket.socket()
-host = '192.168.56.106'
+host = '192.168.56.6'
 port = 8888
 
 print('\nWaiting for connection')
